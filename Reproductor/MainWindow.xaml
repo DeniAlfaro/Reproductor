@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Reproductor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="176.814" Width="409.938">
+        Title="MainWindow" Height="234.147" Width="409.938">
     <Grid>
         <TextBox x:Name="txtRutaArchivo" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" IsEnabled="False"/>
         <Button x:Name="btnExaminar" Content="Examinar" HorizontalAlignment="Left" Margin="315,10,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="BtnExaminar_Click"/>
-        <Button x:Name="btnReproducir" Content="Reproducir" HorizontalAlignment="Left" Margin="11,46,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnPausa" Content="Pausa" HorizontalAlignment="Left" Margin="123,46,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnDetener" Content="Detener" HorizontalAlignment="Left" Margin="235,46,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnReproducir" Content="Reproducir" HorizontalAlignment="Left" Margin="11,46,0,0" VerticalAlignment="Top" Width="75" Click="BtnReproducir_Click"/>
+        <Button x:Name="btnPausa" Content="Pausa" HorizontalAlignment="Left" Margin="123,46,0,0" VerticalAlignment="Top" Width="75" Click="BtnPausa_Click"/>
+        <Button x:Name="btnDetener" Content="Detener" HorizontalAlignment="Left" Margin="235,46,0,0" VerticalAlignment="Top" Width="75" Click="BtnDetener_Click"/>
         <TextBlock x:Name="lblTiempoActual" HorizontalAlignment="Left" Margin="11,83,0,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top"/>
         <TextBlock x:Name="lblTiempoTotal" HorizontalAlignment="Left" Margin="341,83,0,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top"/>
         <Slider x:Name="sldTiempo" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Height="20" Width="380"/>
+        <ComboBox x:Name="cbDispositivoSalida" HorizontalAlignment="Left" Margin="11,147,0,0" VerticalAlignment="Top" Width="379"/>
 
     </Grid>
 </Window>
