@@ -32,6 +32,9 @@ namespace Reproductor
         //Comunicacion con la tarjeta de audio exclusiva
         //hola
         WaveOut output;
+
+        bool dragging = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -49,7 +52,11 @@ namespace Reproductor
         {
             lblTiempoActual.Text = reader.CurrentTime.ToString().Substring(0, 8);
 
-            //reader.CurrentTime.TotalSeconds
+            //para que recorra el slider
+            if (!dragging)
+            {
+                sldTiempo.Value = reader.CurrentTime.TotalSeconds;
+            }
         }
 
         void ListarDispositivosSalida()
@@ -101,6 +108,11 @@ namespace Reproductor
                     lblTiempoTotal.Text = reader.TotalTime.ToString().Substring(0, 8);
 
                     lblTiempoActual.Text = reader.CurrentTime.ToString().Substring(0, 8);
+
+                    //para que recorra el slider
+                    sldTiempo.Maximum = reader.TotalTime.TotalSeconds;
+                    sldTiempo.Value = reader.CurrentTime.TotalSeconds;
+
                     timer.Start();
                 }
             }
@@ -133,6 +145,20 @@ namespace Reproductor
                 btnReproducir.IsEnabled = true;
                 btnPausa.IsEnabled = false;
                 btnDetener.IsEnabled = true;
+            }
+        }
+
+        private void SldTiempo_DragStarted(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)
+        {
+            dragging = true;
+        }
+
+        private void SldTiempo_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+        {
+            dragging = false;
+            if(reader != null && output != null && output.PlaybackState != PlaybackState.Stopped)
+            {
+                reader.CurrentTime = TimeSpan.FromSeconds(sldTiempo.Value);
             }
         }
     }
